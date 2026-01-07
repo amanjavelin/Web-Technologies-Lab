@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration & Management</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Segoe UI, sans-serif;
+            background: #f4f6f8;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: #fff;
+            padding: 25px 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 11px 16px;
+            margin: 12px 0;
+            border-radius: 24px;
+            border: 1px solid #d1d5db;
+            font-size: 14px;
+            transition: all 0.25s ease;
+            background: #f9fafb;
+        }
+
+
+        form input:focus {
+            border-color: #667eea;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+            outline: none;
+        }
+
+        form input::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        button {
+            font-family: inherit;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 15px;
+            padding: 12px 28px;
+            transition: all 0.25s ease;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(102, 126, 234, 0.35);
+        }
+
+        .clear-btn {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            display: block;
+            margin: 25px auto 0;
+        }
+
+        .clear-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(239, 68, 68, 0.35);
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }   
+
+        thead {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        th {
+            padding: 14px;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 14px;
+            font-size: 14px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody tr:hover {
+            background: #eef2ff;
+            transition: background 0.2s ease;
+        }
+
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: #dc2626;
+            transform: scale(1.05);
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>User Registration & Management</h1>
+
+<div class="container">
+
+    <form id="registrationForm">
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="mobile" placeholder="Mobile Number">
+        <input type="password" id="password" placeholder="Password">
+        <button type="submit" class="submit-btn">Register</button>
+    </form>
+
+    <div class="error" id="errorMsg"></div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="userTable"></tbody>
+    </table>
+
+    <button class="clear-btn" onclick="clearUsers()">Clear All Users</button>
+
+</div>
+
+<script>
+    const form = document.getElementById("registrationForm");
+    const tableBody = document.getElementById("userTable");
+    const errorMsg = document.getElementById("errorMsg");
+
+    function getUsers() {
+        return JSON.parse(localStorage.getItem("users")) || [];
+    }
+
+    function saveUsers(users) {
+        localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    function displayUsers() {
+        const users = getUsers();
+        tableBody.innerHTML = "";
+
+        users.forEach((user, index) => {
+            tableBody.innerHTML += `
+                <tr>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.mobile}</td>
+                    <td>
+                        <button class="delete-btn" onclick="deleteUser(${index})">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        errorMsg.textContent = "";
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const mobile = document.getElementById("mobile").value.trim();
+        const password = document.getElementById("password").value;
+
+        if (!name || !email || !mobile || !password) {
+            errorMsg.textContent = "All fields are mandatory";
+            return;
+        }
+
+        if (!/^\d{10}$/.test(mobile)) {
+            errorMsg.textContent = "Mobile number must be 10 digits";
+            return;
+        }
+
+        if (password.length < 6) {
+            errorMsg.textContent = "Password must be at least 6 characters";
+            return;
+        }
+
+        const users = getUsers();
+        const duplicate = users.find(user => user.email === email);
+
+        if (duplicate) {
+            errorMsg.textContent = "Email already registered";
+            return;
+        }
+
+        users.push({ name, email, mobile });
+        saveUsers(users);
+        form.reset();
+        displayUsers();
+    });
+
+    function deleteUser(index) {
+        const users = getUsers();
+        users.splice(index, 1);
+        saveUsers(users);
+        displayUsers();
+    }
+
+    function clearUsers() {
+        if (confirm("Are you sure you want to clear all users?")) {
+            localStorage.removeItem("users");
+            displayUsers();
+        }
+    }
+
+    displayUsers();
+</script>
+
+</body>
+</html>

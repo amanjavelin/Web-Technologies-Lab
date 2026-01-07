@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multimedia Player</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;       
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f8fafc, #eef2f7);
+            font-family: "Segoe UI", Tahoma, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 720px;
+        }
+
+        .player-card {
+            background: #ffffff;
+            padding: 26px 28px;
+            margin-bottom: 32px;
+            border-radius: 14px;
+            box-shadow:
+                0 12px 25px rgba(0, 0, 0, 0.12),
+                0 6px 12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .player-card:hover {
+            transform: translateY(-6px);
+            box-shadow:
+                0 18px 35px rgba(0, 0, 0, 0.15),
+                0 8px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 18px;
+            color: #1f2937;
+            font-size: 22px;
+            letter-spacing: 0.6px;
+        }
+
+        audio,
+        video {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            outline: none;
+        }   
+
+        .time-display {
+            margin-top: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4b5563;
+        }
+
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 18px;
+            }
+
+            .player-card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="player-card">
+        <h2>Audio Player</h2>
+        <audio id="audioPlayer" controls>
+            <source src="audio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <div class="time-display">
+            Current Time: <span id="audioTime">0:00</span>
+        </div>
+    </div>
+
+    <div class="player-card">
+        <h2>Video Player</h2>
+        <video id="videoPlayer" controls>
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="time-display">
+            Current Time: <span id="videoTime">0:00</span>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+    }
+
+    const audio = document.getElementById("audioPlayer");
+    const audioTime = document.getElementById("audioTime");
+
+    audio.addEventListener("timeupdate", () => {
+        audioTime.textContent = formatTime(audio.currentTime);
+    });
+
+    const video = document.getElementById("videoPlayer");
+    const videoTime = document.getElementById("videoTime");
+
+    video.addEventListener("timeupdate", () => {
+        videoTime.textContent = formatTime(video.currentTime);
+    });
+</script>
+
+</body>
+</html>

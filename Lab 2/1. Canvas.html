@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Canvas</title>
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc, #eef2f7);
+            font-family: "Times New Roman", serif;
+        }
+
+        canvas {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 2px solid #d1d5db;
+            box-shadow: 
+                0 10px 25px rgba(0, 0, 0, 0.12),
+                0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="300"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.beginPath();
+        ctx.arc(125, 110, 70, 0, Math.PI * 2); 
+        ctx.fillStyle = '#eb8213';
+        ctx.fill();
+
+        ctx.beginPath();
+   	ctx.moveTo(250, 25);
+    	ctx.lineTo(250, 200);
+    	ctx.strokeStyle = '#000';
+    	ctx.lineWidth = 4;
+    	ctx.stroke();
+
+        ctx.fillStyle = '#8613eb';
+        ctx.fillRect(300, 50, 150, 125)
+
+        ctx.font = 'bold italic 30px "Times New Roman"';
+        ctx.fillStyle = '#2ecc71';
+        ctx.textAlign = 'center';
+        ctx.fillText('HTML5 Canvas', canvas.width / 2, 260);
+    </script>
+</body>
+</html>
