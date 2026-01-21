@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Stage Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Multi-Stage Registration</h1>
+
+  <!-- Progress Bar -->
+  <div class="progress">
+    <div id="progressBar"></div>
+  </div>
+
+  <form id="multiForm" novalidate>
+
+    <!-- Stage 1 -->
+    <div class="stage active">
+      <label>Name</label>
+      <input id="name" placeholder="John Doe">
+      <small></small>
+
+      <label>Email</label>
+      <input id="email" placeholder="example@mail.com">
+      <small></small>
+    </div>
+
+    <!-- Stage 2 -->
+    <div class="stage">
+      <label>Age</label>
+      <input type="number" id="age" placeholder="Age (18+)">
+      <small></small>
+
+      <label>Role</label>
+      <select id="role">
+        <option value="">Select role</option>
+        <option>Student</option>
+        <option>Teacher</option>
+        <option>Admin</option>
+      </select>
+      <small></small>
+    </div>
+
+    <!-- Stage 3 -->
+    <div class="stage">
+      <label>Password</label>
+      <input type="password" id="password" placeholder="Enter password">
+      <small></small>
+
+      <label>Confirm Password</label>
+      <input type="password" id="confirm" placeholder="Confirm password">
+      <small></small>
+    </div>
+
+    <!-- Stage 4 -->
+    <div class="stage">
+      <p><strong>Confirm Details</strong></p>
+      <ul id="summary"></ul>
+    </div>
+
+    <!-- Navigation -->
+    <div class="buttons">
+      <button type="button" id="prevBtn">Previous</button>
+      <button type="button" id="nextBtn">Next</button>
+      <button type="submit" id="submitBtn" class="hidden">Submit</button>
+    </div>
+
+  </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

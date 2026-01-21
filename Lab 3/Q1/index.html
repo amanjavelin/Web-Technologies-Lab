@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adaptive Registration Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>User Registration</h1>
+
+    <form id="form" novalidate>
+
+    <div class="form-group">
+      <label>Name</label>
+      <input id="name" placeholder="John Doe">
+      <small></small>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input id="email" placeholder="example@mail.com">
+      <small></small>
+    </div>
+
+    <div class="form-group">
+      <label>Age</label>
+      <input type="number" id="age" placeholder="Enter your age">
+      <small></small>
+    </div>
+
+    <div class="form-group">
+      <label>Role</label>
+      <select id="role">
+        <option value="">Select role</option>
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+        <option value="admin">Admin</option>
+      </select>
+      <small></small>
+    </div>
+
+    <div class="form-group hidden" id="skillsBox">
+      <label>Skills</label>
+      <input id="skills" placeholder="Comma separated">
+      <small></small>
+    </div>
+
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="password" placeholder="Enter password">
+      <small></small>
+    </div>
+
+    <div class="form-group">
+      <label>Confirm Password</label>
+      <input type="password" id="confirm" placeholder="Confirm password">
+      <small></small>
+    </div>
+
+    <div class="form-group">
+      <label>
+      <input type="checkbox" id="showPassword">
+      Show Password
+      </label>
+    </div>
+
+    <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

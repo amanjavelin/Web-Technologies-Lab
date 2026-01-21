@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Shopping Cart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Shopping Cart</h1>
+
+  <div class="products">
+    <button onclick="addProduct('Laptop','electronics',75000)">Add Laptop</button>
+    <button onclick="addProduct('Headphones','electronics',5000)">Add Headphones</button>
+    <button onclick="addProduct('Book','books',400)">Add Book</button>
+    <button onclick="addProduct('T-Shirt','clothing',3000)">Add T-Shirt</button>
+  </div>
+
+  <div class="coupon">
+    <input id="coupon" placeholder="Enter coupon code">
+    <button onclick="applyCoupon()">Apply</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="cartBody"></tbody>
+  </table>
+
+  <div class="summary">
+    <p>Subtotal: ₹<span id="subtotal">0</span></p>
+    <p>Discount: ₹<span id="discount">0</span></p>
+    <h3>Final Total: ₹<span id="total">0</span></h3>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

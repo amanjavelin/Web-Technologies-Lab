@@ -1,0 +1,71 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Inter,Segoe UI,sans-serif;
+  background:linear-gradient(135deg,#eef2ff,#f5f7ff);
+  padding:40px 20px;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  background:#fff;
+  padding:36px;
+  border-radius:18px;
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
+
+h1{text-align:center;margin-bottom:24px}
+.products button,
+.coupon button{
+  padding:10px 14px;
+  border:none;
+  border-radius:10px;
+  margin:6px;
+  cursor:pointer;
+  background:#6366f1;
+  color:#fff;
+}
+
+.coupon{
+  display:flex;
+  gap:10px;
+  margin:20px 0;
+}
+
+.coupon input{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ddd;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+
+th,td{
+  padding:12px;
+  text-align:center;
+  border-bottom:1px solid #eee;
+}
+
+input.qty{
+  width:60px;
+  padding:6px;
+}
+
+.remove{
+  background:#ef4444;
+  color:#fff;
+  border:none;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.summary{
+  margin-top:20px;
+  text-align:right;
+}
