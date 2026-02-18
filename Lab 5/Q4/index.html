@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Product Inventory System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="inventory-container">
+    <h2>Product Inventory System</h2>
+
+    <div class="form-section">
+        <input type="text" id="prodId" placeholder="Product ID">
+        <input type="text" id="prodName" placeholder="Product Name">
+        <input type="text" id="prodCategory" placeholder="Category">
+        <input type="number" id="prodPrice" placeholder="Price">
+        <input type="number" id="prodStock" placeholder="Stock Quantity">
+    </div>
+
+    <div class="action-buttons">
+        <button onclick="addProduct()">Add</button>
+        <button onclick="updateProduct()">Edit</button>
+        <button onclick="deleteProduct()">Delete</button>
+        <button onclick="loadProducts()">Refresh</button>
+    </div>
+
+    <div class="search-section">
+        <input type="text" id="searchCategory" placeholder="Search by Category">
+        <button onclick="searchByCategory()">Search</button>
+        <button onclick="displayProducts()">Show All</button>
+    </div>
+
+    <div id="message"></div>
+
+    <h3>Total Inventory Value: ₹ <span id="totalValue">0</span></h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody id="inventoryTable"></tbody>
+    </table>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

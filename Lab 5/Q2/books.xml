@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+    <book>
+        <id>1</id>
+        <title>The Alchemist</title>
+        <author>Paulo Coelho</author>
+        <status>Available</status>
+    </book>
+
+    <book>
+        <id>2</id>
+        <title>Atomic Habits</title>
+        <author>James Clear</author>
+        <status>Issued</status>
+    </book>
+</library>

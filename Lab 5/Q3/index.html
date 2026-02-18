@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Student Record System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <h2>Student Record System</h2>
+
+    <div class="form-area">
+        <input type="text" id="studentId" placeholder="Student ID">
+        <input type="text" id="studentName" placeholder="Name">
+        <input type="text" id="studentCourse" placeholder="Course">
+        <input type="number" id="studentMarks" placeholder="Marks">
+    </div>
+
+    <div class="button-group">
+        <button onclick="addStudent()">Add</button>
+        <button onclick="updateStudent()">Update</button>
+        <button onclick="deleteStudent()">Delete</button>
+        <button onclick="loadStudents()">Refresh</button>
+    </div>
+
+    <div id="message"></div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody id="studentTable"></tbody>
+    </table>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
