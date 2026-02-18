@@ -1,0 +1,9 @@
+{
+  "products": [
+    { "name": "Apple Macbook Air", "price": 99990, "category": "Electronics" },
+    { "name": "Samsung Galaxy S23", "price": 49999, "category": "Electronics" },
+    { "name": "Air Jordan 1", "price": 9999, "category": "Footwear" },
+    { "name": "L-Shaped Sofa", "price": 59999, "category": "Furniture" },
+    { "name": "Sony XM6 Headphone", "price": 39999, "category": "Electronics" }
+  ]
+}
